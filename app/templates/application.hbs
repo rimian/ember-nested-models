@@ -5,4 +5,12 @@
   </button>
 </form>
 
+<hr>
+
+<ul>
+  {{#each model as |one|}}
+    <li>One: {{one.id}}</li>
+  {{/each}}
+</ul>
+
 {{outlet}}
