@@ -9,7 +9,15 @@
 
 <ul>
   {{#each model as |one|}}
-    <li>One: {{one.id}}</li>
+    <li>
+      One: {{one.id}}
+      {{one.twos}}
+      <ul>
+        {{#each one.twos as |two|}}
+          <li>{{two}}</li>
+        {{/each}}
+      </ul>
+    </li>
   {{/each}}
 </ul>
 

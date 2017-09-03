@@ -11,10 +11,47 @@ export default Ember.Route.extend({
   actions: {
     createModels() {
       let store = this.get('store');
-      store.createRecord('one').save().then(() => {
-        warn('Done');
-      }).catch(() => {
-        error('On, no!');
+      store.push({
+        data: {
+          id: '1',
+          type: 'one',
+          attributes: {},
+          relationships: {
+            children: {
+              data: [
+                {
+                  id: '2',
+                  type: 'two'
+                },
+                {
+                  id: '3',
+                  type: 'two'
+                },
+                {
+                  id: '4',
+                  type: 'two'
+                }
+              ]
+            }
+          }
+        },
+        included: [
+          {
+            id: '2',
+            type: 'two',
+            attributes: {}
+          },
+          {
+            id: '3',
+            type: 'two',
+            attributes: {}
+          },
+          {
+            id: '4',
+            type: 'two',
+            attributes: {}
+          }
+        ]
       });
     }
   }
