@@ -4,32 +4,33 @@ const { error, warn } = Ember.Logger;
 
 export default Ember.Route.extend({
   model() {
-    warn('model hook happens');
-    return this.get('store').findAll('one');
+    return this.get('store').peekRecord('person', 1);
   },
 
   actions: {
     createModels() {
-      let store = this.get('store');
-      store.push({
+      this.get('store').push({
         data: {
           id: '1',
-          type: 'one',
-          attributes: {},
+          type: 'person',
+          attributes: {
+            firstName: 'Tom',
+            lastName: 'Dale'
+          },
           relationships: {
             children: {
               data: [
                 {
                   id: '2',
-                  type: 'two'
+                  type: 'child'
                 },
                 {
                   id: '3',
-                  type: 'two'
+                  type: 'child'
                 },
                 {
                   id: '4',
-                  type: 'two'
+                  type: 'child'
                 }
               ]
             }
@@ -38,18 +39,24 @@ export default Ember.Route.extend({
         included: [
           {
             id: '2',
-            type: 'two',
-            attributes: {}
+            type: 'child',
+            attributes: {
+            	firstName: 'Child 1'
+            }
           },
           {
             id: '3',
-            type: 'two',
-            attributes: {}
+            type: 'child',
+            attributes: {
+            	firstName: 'Child 2'
+            }
           },
           {
             id: '4',
-            type: 'two',
-            attributes: {}
+            type: 'child',
+            attributes: {
+            	firstName: 'Child 3'
+            }
           }
         ]
       });

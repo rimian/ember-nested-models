@@ -7,18 +7,18 @@
 
 <hr>
 
-<ul>
-  {{#each model as |one|}}
-    <li>
-      One: {{one.id}}
-      {{one.twos}}
-      <ul>
-        {{#each one.twos as |two|}}
-          <li>{{two}}</li>
+<ol>
+  {{#each model as |person|}}
+  	<li>Person: {{person.firstName}} {{person.lastName}}
+    <br/>
+    Children:
+    	<ul>
+      	{{#each person.children key='id' as |child|}}
+    			<li>{{child.firstName}}</li>
         {{/each}}
       </ul>
     </li>
   {{/each}}
-</ul>
+</ol>
 
 {{outlet}}
