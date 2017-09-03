@@ -1,24 +1,14 @@
 
-<form {{action "createModels" on="submit"}}>
-  <button>
-    Create
-  </button>
-</form>
-
-<hr>
-
 <ol>
-  {{#each model as |person|}}
-  	<li>Person: {{person.firstName}} {{person.lastName}}
-    <br/>
-    Children:
-    	<ul>
-      	{{#each person.children key='id' as |child|}}
-    			<li>{{child.firstName}}</li>
-        {{/each}}
-      </ul>
-    </li>
-  {{/each}}
+{{#with model as |person|}}
+	<li>Person: {{person.firstName}} {{person.lastName}}
+  <br/>
+  Children:
+  	<ul>
+    	{{#each person.children key='id' as |child|}}
+  			<li>{{child.firstName}}</li>
+      {{/each}}
+    </ul>
+  </li>
+{{/with}}
 </ol>
-
-{{outlet}}
