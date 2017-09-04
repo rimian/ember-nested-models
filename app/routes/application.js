@@ -5,57 +5,57 @@ export default Ember.Route.extend({
   	return this.store.peekRecord('person', 1);
   },
 
-  mockData: Ember.on('init', function() {
+  init() {
     this.store.push({
-  data: {
-    id: '1',
-    type: 'person',
-    attributes: {
-      firstName: 'Tom',
-      lastName: 'Dale'
-    },
-    relationships: {
-      children: {
-        data: [
-          {
-            id: '2',
-            type: 'person'
-          },
-          {
-            id: '3',
-            type: 'person'
-          },
-          {
-            id: '4',
-            type: 'person'
+      data: {
+        id: '1',
+        type: 'person',
+        attributes: {
+          firstName: 'Tom',
+          lastName: 'Dale'
+        },
+        relationships: {
+          children: {
+            data: [
+              {
+                id: '2',
+                type: 'person'
+              },
+              {
+                id: '3',
+                type: 'person'
+              },
+              {
+                id: '4',
+                type: 'person'
+              }
+            ]
           }
-        ]
-      }
-    }
+        }
+      },
+      included: [
+        {
+          id: '2',
+          type: 'person',
+          attributes: {
+          	firstName: 'Child 1'
+          }
+        },
+        {
+          id: '3',
+          type: 'person',
+          attributes: {
+          	firstName: 'Child 2'
+          }
+        },
+        {
+          id: '4',
+          type: 'person',
+          attributes: {
+          	firstName: 'Child 3'
+          }
+        }
+      ]
+    });
   },
-  included: [
-    {
-      id: '2',
-      type: 'person',
-      attributes: {
-      	firstName: 'Child 1'
-      }
-    },
-    {
-      id: '3',
-      type: 'person',
-      attributes: {
-      	firstName: 'Child 2'
-      }
-    },
-    {
-      id: '4',
-      type: 'person',
-      attributes: {
-      	firstName: 'Child 3'
-      }
-    }
-  ]
-});
-  }),
 });
