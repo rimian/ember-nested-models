@@ -8,11 +8,11 @@
   Children:
   <ul>
     {{#each person.children key='id' as |child|}}
-      <li>{{child.firstName}}<br>
+      <li>{{child.firstName}} {{person.lastName}}<br>
         Children's children:
         <ul>
           {{#each child.children key='id' as |grandchild|}}
-            <li>{{grandchild.firstName}}</li>
+            <li>{{grandchild.firstName}} {{person.lastName}}</li>
           {{/each}}
         </ul>
       </li>
