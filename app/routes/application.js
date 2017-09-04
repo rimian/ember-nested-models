@@ -1,15 +1,16 @@
 import Ember from 'ember';
 
+const { error, warn } = Ember.Logger;
+
 export default Ember.Route.extend({
 
-  actions: {
-    pushIt() {
-      console.log('OK');
-      this._pushIt();
-    }
+  init() {
+    this._super(...arguments);
+    this._pushIt();
   },
 
   _pushIt() {
+    warn('data pushing into store');
     this.store.push({
       data: {
         id: '1',
