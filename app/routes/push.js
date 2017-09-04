@@ -8,6 +8,10 @@ export default Ember.Route.extend({
     this._pushIt();
   },
 
+  model() {
+    this.transitionTo('people');
+  },
+
   _pushIt() {
     warn('data pushing into store');
     this.store.push({
