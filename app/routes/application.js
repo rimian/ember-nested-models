@@ -1,11 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-  	return this.store.peekRecord('person', 1);
+
+  actions: {
+    pushIt() {
+      console.log('OK');
+      this._pushIt();
+    }
   },
 
-  init() {
+  _pushIt() {
     this.store.push({
       data: {
         id: '1',
