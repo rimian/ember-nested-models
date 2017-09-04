@@ -14,5 +14,9 @@ export default Ember.Route.extend({
     p.save().then(() => {
       warn('Saved');
     });
+  },
+
+  model() {
+    return this.store.peekRecord('person', 10);
   }
 });
