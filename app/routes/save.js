@@ -28,8 +28,8 @@ export default Ember.Route.extend({
         firstName: 'Bob',
         lastName: 'Bobson',
         children: [
-          { firstName: 'Ray', lastName: 'Zintoast' },
-          { firstName: 'Arthur', lastName: 'Wrightus' }
+          { firstName: 'Ray', lastName: 'Zintoast', children: [] },
+          { firstName: 'Arthur', lastName: 'Wrightus', children: [] }
         ]
       },
       {
@@ -40,7 +40,7 @@ export default Ember.Route.extend({
             firstName: 'Frank',
             lastName: 'Doobie',
             children: [
-              { firstName: 'Walter', lastName: 'Becker' }
+              { firstName: 'Walter', lastName: 'Becker', children: [] }
             ]
           }
         ]
