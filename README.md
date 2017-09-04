@@ -1,6 +1,8 @@
 # Ember Nested Models
 
-An experiment creating nested models with Ember Pouch.
+An experiment pushing nested models with Ember Pouch.
+
+PouchDB does not currently support `.push()`. https://github.com/pouchdb-community/ember-pouch/issues/165
 
 ## Prerequisites
 
