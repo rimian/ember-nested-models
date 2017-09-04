@@ -3,20 +3,48 @@ import Ember from 'ember';
 const { warn } = Ember.Logger;
 
 export default Ember.Route.extend({
-  beforeModel() {
-    let p = this.get('store').createRecord('person', {
-      id: '10',
-      type: 'person',
-      firstName: 'Ray',
-      lastName: 'Zintoast'
-    });
 
-    p.save().then(() => {
-      warn('Saved');
+  beforeModel() {
+    this._data().forEach((level1) => {
+      let person = this.store.createRecord('person', this._person(level1));
+
+      level1.children.forEach((level2) => {
+        let child = this.store.createRecord('person', this._person(level2));
+        person.get('children').pushObject(child);
+        child.save(() => {
+          person.save();
+        });
+      });
     });
   },
 
-  model() {
-    return this.store.peekRecord('person', 10);
-  }
+  _person(data) {
+    return { firstName: data.firstName, lastName: data.lastName };
+  },
+
+  _data() {
+    return [
+      {
+        firstName: 'Bob',
+        lastName: 'Bobson',
+        children: [
+          { firstName: 'Ray', lastName: 'Zintoast' },
+          { firstName: 'Arthur', lastName: 'Wrightus' }
+        ]
+      },
+      {
+        firstName: 'Indie',
+        lastName: 'Ocean',
+        children: [
+          {
+            firstName: 'Frank',
+            lastName: 'Doobie',
+            children: [
+              { firstName: 'Walter', lastName: 'Becker' }
+            ]
+          }
+        ]
+      },
+    ];
+  },
 });

@@ -5,5 +5,6 @@ export default Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
 
-  children: DS.hasMany('child')
+  children: DS.hasMany('person', { inverse: 'parent' }),
+  parent: DS.belongsTo('person', { inverse: 'children' })
 });
