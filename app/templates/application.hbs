@@ -1,14 +1,12 @@
 
-<ol>
-{{#with model as |person|}}
-	<li>Person: {{person.firstName}} {{person.lastName}}
-  <br/>
-  Children:
-  	<ul>
-    	{{#each person.children key='id' as |child|}}
-  			<li>{{child.firstName}}</li>
-      {{/each}}
-    </ul>
-  </li>
-{{/with}}
-</ol>
+{{#link-to 'index'}}
+	Home
+{{/link-to}}
+|
+{{#link-to 'people'}}
+	People
+{{/link-to}}
+
+<hr>
+
+{{outlet}}
