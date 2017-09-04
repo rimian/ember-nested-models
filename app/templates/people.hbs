@@ -3,13 +3,20 @@
 
 <ol>
 {{#with model as |person|}}
-	<li>Person: {{person.firstName}} {{person.lastName}}
-  <br/>
+  <li>Person: {{person.firstName}} {{person.lastName}}
+  <br>
   Children:
-  	<ul>
-    	{{#each person.children key='id' as |child|}}
-  			<li>{{child.firstName}}</li>
-      {{/each}}
+  <ul>
+    {{#each person.children key='id' as |child|}}
+      <li>{{child.firstName}}<br>
+        Children's children:
+        <ul>
+          {{#each child.children key='id' as |grandchild|}}
+            <li>{{grandchild.firstName}}</li>
+          {{/each}}
+        </ul>
+      </li>
+    {{/each}}
     </ul>
   </li>
 {{/with}}

@@ -23,7 +23,7 @@ export default Ember.Route.extend({
             data: [
               {
                 id: '2',
-                type: 'person'
+                type: 'person',
               },
               {
                 id: '3',
@@ -43,6 +43,16 @@ export default Ember.Route.extend({
           type: 'person',
           attributes: {
           	firstName: 'Child 1'
+          },
+          relationships: {
+            children: {
+              data: [
+                {
+                  id: '5',
+                  type: 'person'
+                }
+              ]
+            }
           }
         },
         {
@@ -57,6 +67,13 @@ export default Ember.Route.extend({
           type: 'person',
           attributes: {
           	firstName: 'Child 3'
+          }
+        },
+        {
+          id: '5',
+          type: 'person',
+          attributes: {
+          	firstName: 'Granchild Child 1'
           }
         }
       ]
